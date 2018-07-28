@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+    关于本站
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/about.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="aboutContent" style="width: 70%;margin:70px auto 20px;opacity: 0.9;">
+        <h3 style="font-size: 35px">欢迎来到六度!</h3>
+        <p class="contents">你一定听说过六度分隔理论(Six Degrees of Separation),如果没有听过,也没有关系,简单地说："你和任何一个陌生人之间所间隔的人不会超过六个，也就是说，最多通过六个人你就能够认识任何一个陌生人。"</p>
+        <p class="contents">本站可以给陌生的,或者已经熟识的各位提供一个重新认识的机会.建立一个全新的,匿名的关系网.当全网的关系符合六度分割理论时,即完成了本站建立的初衷.</p>
+        <br>
+        <hr>
+        <br>
+        <p class="contents">本站文章的内容发布采用Markdown语法排版</p>
+        <p class="contents">注意，为安全起见，本站发布的内容不支持html标签，所有html标签内容将会进行转义处理。</p>
+        <h3 style="font-size: 35px">MarkDown快速入门</h3>
+        <h3 style="font-size: 30px">标题</h3>
+        <p class="contents">在想要设置为标题的文字前面加#来表示一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。</p>
+        <h3 style="font-size: 30px">字体</h3>
+        <p class="contents">加粗:要加粗的文字左右分别用两个*号包起来</p>
+        <p class="contents">斜体:要倾斜的文字左右分别用一个*号包起来</p>
+        <p class="contents">斜体加粗:要倾斜和加粗的文字左右分别用三个*号包起来</p>
+        <p class="contents">删除线:要加删除线的文字左右分别用两个~~号包起来</p>
+        <h3 style="font-size: 30px">引用</h3>
+        <p class="contents">在引用的文字前加>即可。引用也可以嵌套，如加两个>>三个>>> ...n个...</p>
+        <h3 style="font-size: 30px">分割线</h3>
+        <p class="contents">三个或者三个以上的 - 或者 * 都可以。</p>
+        <h3 style="font-size: 30px">图片</h3>
+        <p class="contents">![图片alt](图片地址 ''图片title'')</p>
+        <p class="contents">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</p>
+        <h3 style="font-size: 30px">超链接</h3>
+        <p class="contents">[超链接名](超链接地址 "超链接title") title可加可不加</p>
+        <h3 style="font-size: 30px">无序列表</h3>
+        <p class="contents">无序列表用 - + * 任何一种都可以,即+ - * 加上空格在加内容</p>
+        <h3 style="font-size: 30px">有序列表</h3>
+        <p class="contents">数字加点,即1. 内容...注意内容和列表序号之前有空格隔开</p>
+        <h3 style="font-size: 30px">其他</h3>
+        <p class="contents">markdown语法还支持表格,代码块,流程图等功能,本站不在一一讲解,如果需要,可以点击<a href="http://wowubuntu.com/markdown/">这里</a>继续学习markdown的更多内容</p>
+        <br>
+        <hr>
+        <br>
+        <h3 style="font-size: 35px">技术相关</h3>
+        <p class="contents">网站前端采用HTML+CSS+JavaScript技术开发,其中使用少量BootStrap组件.</p>
+        <p class="contents">网站使用了少量Glyphicon Halflings为BootStrap提供的图标包,特此感谢,友情链接 <a href="http://glyphicons.com/">Glyphicons</a></p>
+        <p class="contents">网站后端使用Python的Flask Web架构开发.</p>
+        <p class="contents">当然这是一个大学生假期闲得慌做出来的小网站,网站的前端,后端,设计,素材均由一个人完成,所以可能会有各种各样的bug.如果你在使用过程中,不幸遇到了bug,你可以给我发邮件.点击<a href="mailto:yrt1999@163.com">Connect me.</a></p>
+        <br>
+        <hr>
+        <br>
+        <h3 style="font-size: 35px">更新日志</h3>
+        <p class="contents">2018-7-17</p>
+        <p class="contents">修复bug若干,清除了主页精选栏内的html标签,优化主页精选栏目显示模式</p>
+        <p class="contents">新增删除功能,在个人主义,全部文章,随笔等界面下,登陆后可看见自己的文章,随笔,评论下面会有删除按钮</p>
+        <p class="contents">新增文章评论功能,在登陆情况下,登陆文章详情界面可以看见评论框,欢迎大家踊跃评论</p>
+        <p class="contents">新增注册时密码验证功能,防止注册时手滑输错密码</p>
+        <hr>
+        <p class="contents">2018-7-18</p>
+        <p class="contents">新增关注功能和取消关注功能,为建构人际关系网迈出重要一步!</p>
+        <p class="contents">重新设计导航栏UI,使用更加漂亮直观的图标形式.</p>
+        <p class="contents">更换某些组件为图标形式,增加网站易用性</p>
+        <hr>
+        <p class="contents">2018-7-24</p>
+        <p class="contents">修复bug若干，优化代码，重构了一些组件</p>
+        <p class="contents">优化markdown解析方式，全面支持表格等格式</p>
+        <p class="contents">重构发布组件，将某些错误界面植入提交页面，减少跳转操作，减轻服务器负担，并提升用户体验</p>
+        <p class="contents">更新网站界面，采用了新的banner图</p>
+        <hr>
+        <p class="contents">2018-7-26</p>
+        <p class="contents">修复bug若干</p>
+        <p class="contents">调整了一些地方的样式，使网站看起来更顺眼</p>
+        <p class="contents">由于导航栏图标难以辨认，于是增加鼠标悬浮时的提醒，增加可辨认性</p>
+    </div>
+{% endblock %}
