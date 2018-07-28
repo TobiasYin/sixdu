@@ -1,0 +1,31 @@
+.time{
+    font-size: 12px;
+    color:#efefef;
+    margin: 5px;
+    text-align: right;
+}
+
+.cream{
+    margin: 25px auto;
+    width: 60%;
+    color:#FFFFFF;
+    font-size: 30px;
+}
+
+.Title{
+    font-size: 50px;
+    margin:30px;
+}
+
+.essaysList{
+    background:rgba(0,102,255,0.5);
+    width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    margin:20px auto;
+}
+
+.essaysContent{
+    font-size: 18px;
+    margin: 20px;
+}

@@ -1,0 +1,17 @@
+.contents{
+    font-size: 24px;
+}
+
+.contents p{
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.aboutContent{
+    background:rgba(0,51,255,0.5) ;
+    width: 100%;
+    border-radius: 20px;
+    padding: 30px;
+    color: #FFFFFF;
+    text-align: justify;
+}

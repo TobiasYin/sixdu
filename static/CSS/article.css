@@ -1,0 +1,68 @@
+.article{
+    width: 70%;
+    margin: 20px auto;
+}
+
+.article h2{
+    width: 100%;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    text-align: left;
+    font-size: 40px;
+    padding-left: 30px;
+}
+
+.author{
+    font-size: 20px;
+    color:#FFFFFF;
+    margin: 5px 15px;
+    text-align: right;
+}
+
+.time{
+    font-size: 16px;
+    color:#FFFFFF;
+    margin:5px 15px;
+    text-align: right;
+}
+
+.articleContent{
+    background:rgba(0,51,255,0.5) ;
+    width: 100%;
+    border-radius: 20px;
+    padding: 30px;
+    color: #FFFFFF;
+    text-align: justify;
+}
+
+.articleContent p{
+    margin: 20px auto;
+    font-size: 16px;
+}
+
+.container{
+    width: 70%;
+    background: rgba(255,255,255,0.3);
+    padding: 10px;
+    margin: 80px auto 10px;
+    border-radius: 20px;
+}
+.form{
+    width: 70%;
+    margin: 20px auto;
+    font-size: 30px;
+}
+
+.empty{
+    height: 20px;
+}
+
+.comment{
+    width: 70%;
+    color: #0066FF;
+    font-family: "微软雅黑";
+    text-align: left;
+    font-size: 40px;
+    padding-left: 30px;
+    margin: 10px 50px;
+}

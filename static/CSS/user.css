@@ -1,0 +1,54 @@
+.article{
+    width: 90%;
+    margin: 10px auto;
+}
+
+.container{
+    background:rgba(0,102,255,0.5);
+    width: 90%;
+    padding: 30px;
+    border-radius: 20px;
+    margin:3% auto;
+}
+
+.article h2{
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.username{
+    font-size: 80px;
+    margin-top: 60px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.time{
+    font-size: 12px;
+    color:#efefef;
+    margin: 5px;
+    text-align: right;
+}
+
+.essay{
+    width: 90%;
+    margin: 10px auto;
+}
+
+.essay h2{
+    width: 100%;
+    color: #0066FF;
+    font-family: "微软雅黑";
+    text-align: left;
+    font-size: 40px;
+    padding-left: 15px;
+}
+
+.article .all,.essay .all{
+    color: #0066FF;
+    width: 95%;
+    text-align: right;
+    padding: 15px;
+    font-size: 30px;
+}

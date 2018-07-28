@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <!-- goods -->
+    <div class="goods">
+        <div class="welcome">
+            <p>欢迎来到六度!</p>
+            <br>
+            <p>六度是一个开放式的社区.</p>
+            <br>
+            <p>在这里,你可以发文章,也可以发随笔.</p>
+            <br>
+            <p>想要了解更多,请点击<a href="{{ url_for('about') }}">关于本站</a></p>
+            <br>
+        </div>
+        {% if articlelast!=None %}
+            <div class="last">
+                <h2>最新文章</h2>
+                <div class="lastEssays">
+                    <div class="lastEssaysTitle">{{ articlelast.title }}</div>
+                    <div class="author">{{  articlelast.author.username }}</div>
+                    <div class="time">{{ articlelast.time }}</div>
+                    <div class="lastEssaysContent">
+                       {{ articlelast.content|safe }}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="last">
+                <h2>最新文章</h2>
+                <div class="lastEssays">
+                    <div class="lastEssaysTitle">暂时还没有文章,请稍后重试,或者,你可以自己发一篇~</div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <!-- extra -->
+    <div class="extra">
+        <div class="cream">
+            <h2>精选</h2>
+            {% if len(cream)!=0 %}
+                {% for item in cream %}
+                <div class="creamList">
+                    <a href="{{ url_for('article',article_id=item.id)}}">
+                    <h3 class="creamTitle">{{ item.title }}</h3>
+                    <p class="creamContent">{{ clean(item.content)[0:100]}}</p>
+                    <div class="author">{{ item.author.username }}</div>
+                    <p class="time">{{ item.time }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="creamList">
+                    <div class="creamContent" style="width: 100%">暂时没有文章</div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="essays">
+            <h2>随笔</h2>
+            {% if len(essays)!=0 %}
+                {% for item in essays %}
+                    <div class="essaysList">
+                        <h3 class="essaysTitle">{{ item.title }}</h3>
+                        <div class="essaysContent">{{ clean(item.content)}}</div>
+                        <div class="author"><a href="{{ url_for('user',user_id=item.author.id) }}">{{ item.author.username }}</a></div>
+                        <div class="time">{{ item.time }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="essaysList">
+                    <div class="essaysContent" style="width: 100%">暂时没有随笔</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

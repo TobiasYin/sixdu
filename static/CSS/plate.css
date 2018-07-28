@@ -1,0 +1,21 @@
+.plateList{
+    margin: 30px auto;
+    width: 60%;
+    color:#FFFFFF;
+    font-size: 30px;
+}
+
+.plateTitle{
+    font-size: 50px;
+}
+
+.plateName{
+    background:rgba(0,102,255,0.5);
+    width: 35%;
+    height: 100px;
+    float: left;
+    margin: 50px;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 20px;
+}

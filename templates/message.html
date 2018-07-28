@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    留言板
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/messageBoard.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="sendMessage"><form method="post">
+        <div class="text">
+            <textarea rows="8" cols="60" class="textArea" name="massage" placeholder="请输入留言内容"></textarea>
+        </div>
+        <div class="sendName"><input type="text" class="sendNameInput" placeholder="请输入你的名字" name="messageName"></div>
+        <div class="botton"><input type="submit" class="submit"></div>
+    </form></div>
+    <div class="Title">留言板</div>
+    <div class="message">
+        {% if length!=0 %}
+            {% for item in messages %}
+                <div class="messageList">
+                    <div class="messageName">{{ item.sender }}</div>
+                    <div class="messageContent">{{ item.comtent |safe }}</div>
+                    <div class="time">{{ item.time }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+                <div class="messageList">
+                    <div class="messageContent" style="width: 100%">暂时没有留言哟,要不发一条?</div>
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}

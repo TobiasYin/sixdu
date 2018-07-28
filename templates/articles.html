@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    文章
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/cream.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="cream" style="margin:100px auto;text-align: center">
+        <div class="Title">精选文章</div>
+        {% if len(cream)!=0 %}
+            {% for item in cream %}
+                <div class="essaysList">
+                    <a href="{{ url_for('article',article_id=item.id)}}">
+                    <div class="essaysTitle">{{ item.title }}</div>
+                    <div class="essaysContent">{{ clean(item.content)[0:100]}}</div>
+                    <div class="time">{{ item.time }}</div></a>
+                </div>
+                {% if item.author==user %}
+                    <div class="delete" style="width: 50px">
+                        <div><a href="{{ url_for('delete_article',article_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a></div>
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+                 <div class="essaysTitle" style="width: 100%">没有找到文章,请重试 </div>
+        {% endif %}
+    </div>
+{% endblock %}

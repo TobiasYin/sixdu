@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+    登陆
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/login.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="login">
+        <div style="width: 70%;margin: 10px auto">
+            <form method="post" id="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember"> 记住我
+                </label>
+              </div>
+                <div id="warning"></div>
+                <button type="submit" class="btn btn-default btn-block"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;登陆</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var form=document.getElementById("form");
+        var username=document.getElementById("username");
+        var password=document.getElementById("password");
+        var warningBox=document.getElementById("warning");
+        form.onsubmit=function () {
+            if(username.value){
+                if(password.value){
+                    return true;
+                }else {
+                    warningBox.innerHTML="密码不能为空";
+                    warningBox.className="warn";
+                    return false;
+                }
+            }else{
+                warningBox.innerHTML="用户名不能为空";
+                warningBox.className="warn";
+                return false;
+            }
+        };
+        username.onfocus=function(){
+            warningBox.innerHTML="";
+            warningBox.className="";
+        };
+        password.onfocus=function () {
+            warningBox.innerHTML="";
+            warningBox.className="";
+        }
+    </script>
+{% endblock %}

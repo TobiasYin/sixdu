@@ -1,0 +1,83 @@
+.time{
+    font-size: 12px;
+    color:#efefef;
+    margin: 5px;
+    text-align: right;
+}
+
+.Title{
+    font-size: 50px;
+    margin:35px;
+    color: #0066FF;
+}
+
+.main{
+    width: 60%;
+    margin: 30px auto;
+    color: #FFFFFF;
+}
+
+.message{
+    width: 90%;
+}
+
+.messageList{
+    background:rgba(0,102,255,0.5);
+    width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    margin:20px auto;
+}
+
+.messageName{
+    font-size: 30px;
+    padding: 0 0 10px;
+}
+
+.messageContent{
+    width: 90%;
+    margin: 5px auto;
+    text-align: justify;
+    font-size: 25px;
+}
+
+.textArea{
+    background: rgba(0,102,255,0.3);
+    font-size: 20px;
+    border-radius: 30px;
+    color: #FFFFFF;
+    margin: 10px;
+    padding: 20px;
+}
+
+.text{
+    margin: auto;
+    text-align: center;
+}
+
+.sendName{
+    text-align: right;
+    width: 90%;
+}
+
+.sendNameInput{
+    background: rgba(0,102,255,0.3);
+    font-size: 20px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+.botton{
+    text-align:right;
+    width: 90%;
+    margin: 8px 0 10px;
+}
+
+.submit{
+    background: #FF9933;
+    color: #FFFFFF;
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 8px;
+}

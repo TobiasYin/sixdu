@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    登陆失败
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/login.css') }}" rel="stylesheet" type="text/css">
+    <style type="text/css">.login p{font-size: 30px;color: #FFFFFF}</style>
+{% endblock %}
+{% block main %}
+    <div class="login">
+        <div style="width: 70%;margin: 10px auto;text-align: center">
+            <p>登录失败,请<a href="{{ url_for('login')}}">重试</a></p>
+            <p>错误原因:{{ failcode }}</p>
+        </div>
+    </div>
+{% endblock %}

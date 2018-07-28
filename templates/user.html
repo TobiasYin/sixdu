@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+    个人 {{ users.username }}
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/user.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='CSS/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="userinfo">
+    <div class="username">{{ users.username }}</div>
+    {% if user %}
+        {% if user.id==users.id %}
+            <div class="follow"><a href="{{ url_for('follow_list',user_id=users.id) }}" >关注的人</a></div>
+        {% else %}
+            <div style="text-align: center;">
+            <span class="follow"><a href="{{ url_for('follow_list',user_id=users.id) }}" >关注的人</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if not follow %}
+                <span class="follow"><a href="{{ url_for('follow',user_id=users.id) }}" >关注</a></span>
+            {% else %}
+                <span class="follow"><a href="{{ url_for('cancel_follow',user_id=users.id) }}" >取消关注</a></span>
+            {% endif %}
+            </div>
+        {% endif %}
+    {% else %}
+         <div class="follow"><a href="{{ url_for('follow_list',user_id=users.id) }}" >关注的人</a></div>
+    {% endif %}
+    <div class="article">
+        <h2>近期文章</h2>
+        {% if len(users.articles)!=0 %}
+            {% for item in users.articles[::-1][0:4] %}
+                <div class="container">
+                    <a href="{{ url_for('article',article_id=item.id)}}">
+                    <h3 class="creamTitle">{{ item.title }}</h3>
+                    <p class="creamContent">{{ clean(item.content)[0:100]}}</p>
+                    <p class="time">{{ item.time }}</p>
+                    </a>
+                </div>
+                {% if item.author==user %}
+                    <div class="delete" style="width: 50px;margin-right: 8%;">
+                        <div><a href="{{ url_for('delete_article',article_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a></div>
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+            {% endfor %}
+            <div class="all"><a href="{{ url_for('all_articles',user_id=users.id) }}" class="all">查看全部</a></div>
+        {% else %}
+            <div class="container" style="text-align: center;color: #FFFFFF">
+                <p>暂时没有文章</p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    <div class="essay">
+        <h2>近期随笔</h2>
+        {% if len(users.essays)!=0 %}
+            {% for item in users.essays[::-1][0:4] %}
+                <div class="container">
+                    <h3 class="creamTitle">{{ item.title }}</h3>
+                    <p class="creamContent">{{ item.content}}</p>
+                    <p class="time">{{ item.time }}</p>
+                </div>
+                    {% if item.author==user %}
+                        <div class="delete" style="width: 50px;margin-right: 8%;">
+                            <div><a href="{{ url_for('delete_essay',essay_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    {% endif %}
+            {% endfor %}
+            <div class="all"><a href="{{ url_for('all_essays',user_id=users.id) }}" class="all">查看全部</a></div>
+        {% else %}
+            <div class="container" style="text-align: center;color: #FFFFFF">
+                <p>暂时没有随笔</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

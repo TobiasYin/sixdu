@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    随笔
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/essays.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="essays">
+        <div class="Title">随笔</div>
+        {% if len(essays)!=0 %}
+            {% for item in essays %}
+                <div class="essaysList">
+                    <div class="essaysTitle">{{ item.title }}</div>
+                    <div class="essaysContent">{{ item.content }}</div>
+                    <div class="author"><a href="{{ url_for('user',user_id=item.author.id) }}">作者:{{ item.author.username }}</a></div>
+                    <div class="time">{{ item.time }}</div>
+                </div>
+                {% if item.author==user %}
+                    <div class="delete" style="width: 50px">
+                        <div><a href="{{ url_for('delete_essay',essay_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a> </div>
+                    </div>
+                    <div class="clear"></div>
+                 {% endif %}
+            {% endfor %}
+        {% else %}
+                <div class="essaysList">
+                    <div class="essaysTitle" style="width: 100%;text-align: center">还没有发布随笔唷,请稍后再试~ </div>
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}

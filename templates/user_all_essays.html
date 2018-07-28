@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ users.username }}的所有随笔
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/user.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='CSS/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="username">{{ users.username }}</div>
+    {% if users.articles==None %}
+        <div class="article">
+            <h2 style="text-align: center">404 NOT FOUND</h2>
+            <div class="articleContent"><p>他还没有随笔</p></div>
+        </div>
+    {% else %}
+            {% for item in users.essays[::-1] %}
+                <div class="container">
+                    <h3 class="creamTitle">{{ item.title }}</h3>
+                    <p class="creamContent">{{ item.content}}</p>
+                    <p class="time">{{ item.time }}</p>
+                </div>
+                {% if item.author==user %}
+                    <div class="delete" style="width: 50px;margin-right: 13%;">
+                        <div><a href="{{ url_for('delete_essay',essay_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a></div>
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+            {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+    发布文章
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/new_article.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="form">
+            <form method="post" id="form">
+                <input type="text" class="form-control" placeholder="请输入标题" name="title" style="background: transparent;font-size: 30px" id="title">
+                <div class="empty"></div>
+                <textarea class="form-control" name="content" rows="30" style="background: transparent;font-size: 24px" id="container" placeholder="说明:发布系统在测试中,建议不要在此编辑,从别处编辑好在此处粘贴,如需排版,可以使用markdown语法."></textarea>
+                <div class="empty"></div>
+                <div id="warning"></div>
+                <div class="empty"></div>
+                <button class="btn btn-default btn-block" type="submit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp;&nbsp;提交</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var form=document.getElementById("form");
+        var container=document.getElementById("container");
+        var title=document.getElementById("title");
+        var warningBox=document.getElementById("warning");
+        form.onsubmit=function () {
+            if(title.value){
+                if(container.value){
+                    return true;
+                }else{
+                    warningBox.innerHTML="内容不能为空";
+                    warningBox.className="warn";
+                    return false;
+                }
+            }else{
+                warningBox.innerHTML="标题不能为空";
+                warningBox.className="warn";
+                return false;
+            }
+        };
+        container.onfocus=function () {
+            warningBox.innerHTML="";
+            warningBox.className="";
+        };
+        title.onfocus=function () {
+            warningBox.innerHTML="";
+            warningBox.className="";
+        }
+    </script>
+{% endblock %}

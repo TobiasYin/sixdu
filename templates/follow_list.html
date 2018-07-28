@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ users.username }}关注的人
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/user.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='CSS/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="userinfo">
+    <div class="username">{{ users.username }}</div>
+    <div class="article">
+        <h2>关注的人</h2>
+        {% if len(result)!=0 %}
+            {% for item in result %}
+                <div class="container" style="text-align: center;">
+                    <a href="{{ url_for('user',user_id=item.id)}}" style="font-size: 40px">
+                    <h3 class="creamTitle" style="font-size: 40px">{{ item.username }}</h3>
+                    </a>
+                </div>
+                {% if user %}
+                    {% if users.id==user.id %}
+                         <div class="delete" style="width: 100px;margin-right: 100px"><a href="{{ url_for('cancel_follow',user_id=item.id) }}" >取消关注</a></div>
+                         <div class="clear"></div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="container" style="text-align: center;color: #FFFFFF">
+                <p>暂时没有关注别人</p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

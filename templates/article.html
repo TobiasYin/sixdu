@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/article.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='CSS/essays.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    {% if article==None %}
+        <div class="article" style="margin: 10px auto">
+            <h2 style="text-align: center">404 NOT FOUND</h2>
+            <div class="articleContent"><p>您所寻找的页面没有找的,请重试.</p></div>
+        </div>
+    {% else %}
+        <div class="article">
+            <h2>{{ article.title }}</h2>
+            <div class="author"><a href="{{ url_for('user',user_id=article.author.id) }}">作者:{{ article.author.username }}</a></div>
+            <div class="time">{{ article.time }}</div>
+            <div class="articleContent">{{ article.content|safe }}</div>
+        </div>
+        {% if article.author==user %}
+                <div class="delete" style="margin-right: 15%;">
+                    <div><a href="{{ url_for('delete_article',article_id=article.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a> </div>
+                </div>
+        {% endif %}
+        {% if user %}
+            <div class="container">
+                <div class="form">
+                   <form method="post" action="{{ url_for('comment',comment_id=article.id) }}">
+                        <div class="empty"></div>
+                        <textarea class="form-control" name="comment" rows="3" style="background: transparent;font-size: 20px;" placeholder="说明:评论系统在测试中,建议不要在此编辑,从别处编辑好在此处粘贴.评论功能不支持markdown排版."></textarea>
+                        <div class="empty"></div>
+                        <button class="btn btn-default btn-block" type="submit">提交</button>
+                   </form>
+                </div>
+            </div>
+        {% endif %}
+        {% if len(article.comment)!=0 %}
+            <h2 class="comment">评论</h2>
+            {% for item in article.comment[::-1] %}
+                <div class="article">
+                    <div class="essaysList">
+                        <div class="essaysContent" style="color: #FFFFFF">{{ item.content }}</div>
+                        <div class="author"><a href="{{ url_for('user',user_id=item.author.id) }}">作者:{{ item.author.username }}</a></div>
+                        <div class="time">{{ item.time }}</div>
+                    </div>
+                    {% if item.author==user %}
+                        <div class="delete" style="width: 50px">
+                            <div><a href="{{ url_for('delete_comment',comment_id=item.id) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>{# &nbsp;&nbsp;删除 #}</a> </div>
+                        </div>
+                        <div class="clear"></div>
+                     {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

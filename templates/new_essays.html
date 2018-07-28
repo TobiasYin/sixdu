@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    发布随笔
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/new_article.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="form">
+            <form method="post" id="form">
+                <div class="empty"></div>
+                <textarea id="container" class="form-control" name="essays" rows="8" style="background: transparent;font-size: 24px" placeholder="说明:发布系统在测试中,建议不要在此编辑,从别处编辑好在此处粘贴.随笔是用来发布一些简短的故事的,没有标题,不支持markdown排版,建议保持在200字以内."></textarea>
+                <div class="empty"></div>
+                <div id="warning"></div>
+                <div class="empty"></div>
+                <button class="btn btn-default btn-block" type="submit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp;&nbsp;提交</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var form=document.getElementById("form");
+        var container=document.getElementById("container");
+        var warningBox=document.getElementById("warning");
+        form.onsubmit=function () {
+            if(container.value){
+                return true;
+            }else{
+                warningBox.innerHTML="内容不能为空";
+                warningBox.className="warn";
+                return false;
+            }
+        };
+        container.onfocus=function () {
+            warningBox.innerHTML="";
+            warningBox.className="";
+        }
+    </script>
+{% endblock %}

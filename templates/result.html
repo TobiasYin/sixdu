@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ result }}
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/login.css') }}" rel="stylesheet" type="text/css">
+    <style type="text/css">.login p{font-size: 30px;color: #FFFFFF}</style>
+{% endblock %}
+{% block main %}
+    <div class="login">
+        <div style="width: 70%;margin: 10px auto;text-align: center">
+            <p>{{ result }}</p>
+            <p>{{ code }}</p>
+        </div>
+    </div>
+{% endblock %}

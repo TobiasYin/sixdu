@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    板块
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static',filename='CSS/plate.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+    <div class="plateList">
+            <div class="plateTitle">板块</div>
+            {% if length!=0 %}
+                {% for plates in plate %}
+                    <div class="plateName"><a href="{{ url_for('platelist',id=plates.id) }})">plates.title</a> </div>
+                {% endfor %}
+            {% else %}
+                 <div class="plateName" style="width: 100%">暂时没有板块,请稍后重试 </div>
+            {% endif %}
+    </div>
+{% endblock %}
