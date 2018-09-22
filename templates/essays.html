@@ -12,7 +12,7 @@
             {% for item in essays %}
                 <div class="essaysList">
                     <div class="essaysTitle">{{ item.title }}</div>
-                    <div class="essaysContent">{{ item.content }}</div>
+                    <div class="essaysContent">{{ item.content|safe }}</div>
                     <div class="author"><a href="{{ url_for('user',user_id=item.author.id) }}">作者:{{ item.author.username }}</a></div>
                     <div class="time">{{ item.time }}</div>
                 </div>

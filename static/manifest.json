@@ -1,0 +1,22 @@
+{
+  "scope": "/",
+  "name": "六度网",
+  "short_name": "六度",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "六度 -世界因你而连接",
+  "orientation": "portrait",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "icons": [{
+    "src": "image/logo32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },
+    {
+      "src": "image/logo144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}
