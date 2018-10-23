@@ -93,6 +93,25 @@ def index():
         return render_template('index.html', **kw)
 
 
+@app.route('/c')
+def index_c():
+    result1 = Article.query.all()
+    length = len(result1)
+    if length != 0:
+        article_last = result1[-1]
+        if length != 1:
+            result1 = result1[::-1][1:min(length, 4)]
+        else:
+            result1 = []
+    else:
+        article_last = None
+    result2 = Essays.query.all()
+    if result2:
+        result2 = result2[-5:][::-1]
+    kw = {'cream': result1, 'essays': result2, 'len': len, 'articlelast': article_last, 'clean': clean_html}
+    return render_template('index.html', **kw)
+
+
 @app.route('/article/<article_id>')
 def article(article_id):
     result = Article.query.filter(Article.id == article_id).first()
